@@ -4,7 +4,8 @@ export type InputType =
   | "boolean"
   | "array"
   | "object"
-  | "date";
+  | "date"
+  | "submit";
 
 export type Input = string | number | boolean | Array<any> | object | Date;
 

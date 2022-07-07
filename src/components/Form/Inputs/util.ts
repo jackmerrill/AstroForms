@@ -5,6 +5,7 @@ import ArrayInput from "./ArrayInput.astro";
 import GenericInput from "./GenericInput.astro";
 import DateInput from "./DateInput.astro";
 import NumberInput from "./NumberInput.astro";
+import Submit from "./Submit.astro";
 
 export function GetInput(type: InputType) {
   switch (type) {
@@ -20,6 +21,8 @@ export function GetInput(type: InputType) {
       return ArrayInput;
     case "object":
       return GenericInput;
+    case "submit":
+      return Submit;
     default:
       return StringInput;
   }
