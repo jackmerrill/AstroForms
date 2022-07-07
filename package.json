@@ -1,0 +1,18 @@
+{
+  "name": "astro-forms",
+  "version": "0.0.1",
+  "private": true,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.18.6",
+    "@babel/helper-validator-identifier": "7.18.6",
+    "@babel/preset-env": "^7.18.6",
+    "@babel/types": "^7.18.6",
+    "astro": "^1.0.0-beta.64"
+  }
+}

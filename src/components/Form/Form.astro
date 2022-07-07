@@ -1,0 +1,14 @@
+---
+import GenericInput from "./Inputs/GenericInput.astro";
+import { FormSchema } from "./types";
+
+const { schema, action, method, classes } = Astro.props as { schema: FormSchema, action: string, method: 'post' | 'get', classes: string }
+
+if (schema.type !== 'object') {
+    throw new Error('Initial form schema must be an object')
+}
+---
+
+<form action={action} method={method} class={classes}>
+    <GenericInput schema={schema} />
+</form>

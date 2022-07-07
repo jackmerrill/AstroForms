@@ -1,0 +1,62 @@
+---
+import { FormSchema } from "../types";
+import StringInput from "./StringInput.astro";
+import BooleanInput from "./BooleanInput.astro";
+import ArrayInput from "./ArrayInput.astro";
+
+const { schema, schemaKey } = Astro.props as { schema: FormSchema, schemaKey: string }
+
+const Inputs = []
+const InputArgs = []
+
+console.log(schema)
+
+if (!schema.properties) {
+    throw new Error("No properties found in schema")
+}
+
+
+Object.entries(schema.properties).forEach(([key, value]) => {
+    let inputKey;
+
+    if (schemaKey) {
+        inputKey = `${schemaKey}.${key}`
+    } else {
+        inputKey = key
+    }
+
+    let FormInput;
+    let FormArgs: Record<string, any> = { title: value.title, name: inputKey }
+
+    if (value.type === 'string') {
+        FormInput = StringInput;
+    } else if (value.type === 'boolean') {
+        FormInput = BooleanInput;
+    } else if (value.type === 'array') {
+        FormInput = ArrayInput;
+        FormArgs = { ...FormArgs, items: value.items }
+    } else if (value.type === 'object') {
+        FormInput = Astro.self;
+        FormArgs = { ...FormArgs, schema: value, schemaKey: key };
+    } else {
+        throw new Error(`Unsupported input type: ${value.type}`);
+    }
+
+    Inputs.push(
+        FormInput
+    );
+
+    InputArgs.push({
+        key,
+        value,
+        ...FormArgs
+    })
+})
+---
+
+<div>
+    <h1>{schema.title}</h1>
+    {Inputs.map((Input, index) => (
+        <Input key={index} {...InputArgs[index]} />
+    ))}
+</div>
