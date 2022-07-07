@@ -1,6 +1,12 @@
-export type InputType = "string" | "number" | "boolean" | "array" | "object";
+export type InputType =
+  | "string"
+  | "number"
+  | "boolean"
+  | "array"
+  | "object"
+  | "date";
 
-export type Input = string | number | boolean | Array<any> | object;
+export type Input = string | number | boolean | Array<any> | object | Date;
 
 export interface FormSchema {
   type: InputType;
@@ -9,4 +15,10 @@ export interface FormSchema {
     [key: string]: FormSchema;
   };
   items?: FormSchema;
+}
+
+export interface Components {
+  String: any;
+  Boolean: any;
+  Array: any;
 }
