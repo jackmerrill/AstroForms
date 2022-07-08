@@ -2,46 +2,52 @@
 import { Theme, FormSchema } from "../../types";
 import { GetInput } from "./util";
 
-const { schema, schemaKey, components } = Astro.props as { schema: FormSchema, schemaKey: string, components: Theme }
+const { schema, schemaKey, components } = Astro.props as {
+    schema: FormSchema;
+    schemaKey: string;
+    components: Theme;
+};
 
-const Inputs = []
-const InputArgs = []
+const Inputs = [];
+const InputArgs = [];
 
 if (!schema.properties) {
-    throw new Error("No properties found in schema")
+    throw new Error("No properties found in schema");
 }
-
 
 Object.entries(schema.properties).forEach(([key, value]) => {
     let inputKey;
 
     if (schemaKey) {
-        inputKey = `${schemaKey}.${key}`
+        inputKey = `${schemaKey}.${key}`;
     } else {
-        inputKey = key
+        inputKey = key;
     }
 
     let FormInput;
-    let FormArgs: Record<string, any> = { title: value.title, name: inputKey }
+    let FormArgs: Record<string, any> = { title: value.title, name: inputKey };
 
     FormInput = GetInput(value.type);
-    FormArgs = { ...FormArgs, schema: value, schemaKey: key, items: value.items, components, subtitle: value.subtitle };
+    FormArgs = {
+        ...FormArgs,
+        schema: value,
+        schemaKey: key,
+        items: value.items,
+        components,
+        subtitle: value.subtitle,
+    };
 
-    Inputs.push(
-        FormInput
-    );
+    Inputs.push(FormInput);
 
     InputArgs.push({
         key,
         value,
-        ...FormArgs
-    })
-})
+        ...FormArgs,
+    });
+});
 ---
 
-<div class:list={["space-y-2 grid", schemaKey && 'px-2' ]}>
+<div class:list={["space-y-2 grid", schemaKey && "px-2" ]}>
     <h1 class="font-semibold text-xl">{schema.title}</h1>
-    {Inputs.map((Input, index) => (
-    <Input key={index} {...InputArgs[index]} />
-    ))}
+    {Inputs.map((Input, index) => <Input key={index} {...InputArgs[index]} />)}
 </div>

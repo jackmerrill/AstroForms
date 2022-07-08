@@ -2,25 +2,24 @@
 import schema from "../util/schema";
 import Form from "../components/Form/Form.astro";
 import tailwind from "../components/Form/themes/tailwind";
-
 ---
 
 <html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width" />
+    <title>Astro Forms</title>
+  </head>
 
-<head>
-	<meta charset="utf-8" />
-	<meta name="viewport" content="width=device-width" />
-	<title>Astro Forms</title>
-</head>
+  <body>
+    <div class="py-8">
+      <h1 class="font-bold text-2xl text-center">
+        Astro Forms Example (TailwindCSS)
+      </h1>
 
-<body>
-	<div class="py-8">
-		<h1 class="font-bold text-2xl text-center">Astro Forms Example (TailwindCSS)</h1>
-
-		<div class="max-w-4xl mx-auto">
-			<Form schema={schema} theme={tailwind} action="/" method="post" />
-		</div>
-	</div>
-</body>
-
+      <div class="max-w-4xl mx-auto">
+        <Form schema={schema} theme={tailwind} action="/" method="post" />
+      </div>
+    </div>
+  </body>
 </html>

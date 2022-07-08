@@ -1,8 +1,8 @@
 ---
-const { title, checked } = Astro.props as { title: string, checked: boolean };
+const { title, checked } = Astro.props as { title: string; checked: boolean };
 ---
 
 <label>
-    {title}
-    <input type="checkbox" checked={checked} />
+  {title}
+  <input type="checkbox" checked={checked} />
 </label>

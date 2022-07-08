@@ -2,10 +2,10 @@
 import { FormSchema } from "../../types";
 import GenericInput from "./GenericInput.astro";
 
-const { title, items } = Astro.props as { title: string, items: FormSchema }
+const { title, items } = Astro.props as { title: string; items: FormSchema };
 ---
 
 <label>
-    {title}
-    <GenericInput schema={items.properties} />
+  {title}
+  <GenericInput schema={items.properties} />
 </label>

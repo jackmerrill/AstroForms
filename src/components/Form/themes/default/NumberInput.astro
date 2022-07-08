@@ -1,8 +1,8 @@
 ---
-const { title, name } = Astro.props as { title: string, name: string }
+const { title, name } = Astro.props as { title: string; name: string };
 ---
 
 <label>
-    {title}
-    <input type="number" name={name} />
+  {title}
+  <input type="number" name={name} />
 </label>

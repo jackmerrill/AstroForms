@@ -2,18 +2,24 @@
 import { GenericTheme } from "./Themes";
 import { Theme, FormSchema } from "./types";
 
-const { schema, action, method, classes, theme } = Astro.props as { schema: FormSchema, action: string, method: 'post' | 'get', classes: string, theme: Theme }
+const { schema, action, method, classes, theme } = Astro.props as {
+  schema: FormSchema;
+  action: string;
+  method: "post" | "get";
+  classes: string;
+  theme: Theme;
+};
 
 const components: Theme = {
-    ...GenericTheme,
-    ...theme
-}
+  ...GenericTheme,
+  ...theme,
+};
 
-if (schema.type !== 'object') {
-    throw new Error('Initial form schema must be an object')
+if (schema.type !== "object") {
+  throw new Error("Initial form schema must be an object");
 }
 ---
 
 <form action={action} method={method} class={classes}>
-    <components.Generic schema={schema} components={components} />
+  <components.Generic schema={schema} components={components} />
 </form>

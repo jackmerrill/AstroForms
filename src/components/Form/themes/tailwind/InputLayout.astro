@@ -1,15 +1,19 @@
 ---
 import { FormSchema } from "../../types";
 
-const { schema, name } = Astro.props as { schema: FormSchema, name: string };
+const { schema, name } = Astro.props as { schema: FormSchema; name: string };
 ---
 
 <div>
-    <label for={name} class="block text-sm font-medium text-gray-700">{schema.title}</label>
-    <div class="mt-1">
-        <slot />
-    </div>
-    {schema.subtitle && (
-    <p class="mt-2 text-sm text-gray-500" id="email-description">{schema.subtitle}</p>
-    )}
+  <label for={name} class="block text-sm font-medium text-gray-700"
+    >{schema.title}
+  </label>
+  <div class="mt-1">
+    <slot></slot>
+  </div>
+  {schema.subtitle && (
+    <p class="mt-2 text-sm text-gray-500" id="email-description">
+      {schema.subtitle}
+    </p>
+  )}
 </div>
