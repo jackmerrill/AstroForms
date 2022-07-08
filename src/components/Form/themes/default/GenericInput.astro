@@ -1,8 +1,8 @@
 ---
-import { Components, FormSchema } from "../types";
-import { GetInput } from "./util";
+import { Theme, FormSchema } from "../../types";
+import { GetInput } from ".";
 
-const { schema, schemaKey, components } = Astro.props as { schema: FormSchema, schemaKey: string, components: Components }
+const { schema, schemaKey, components } = Astro.props as { schema: FormSchema, schemaKey: string, components: Theme }
 
 const Inputs = []
 const InputArgs = []

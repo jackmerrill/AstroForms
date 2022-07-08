@@ -1,17 +1,12 @@
 ---
-import GenericInput from "./Inputs/GenericInput.astro";
-import ArrayInput from "./Inputs/ArrayInput.astro";
-import BooleanInput from "./Inputs/BooleanInput.astro";
-import StringInput from "./Inputs/StringInput.astro";
-import { Components, FormSchema } from "./types";
+import { GenericTheme } from "./Themes";
+import { Theme, FormSchema } from "./types";
 
-const { schema, action, method, classes, customComponents } = Astro.props as { schema: FormSchema, action: string, method: 'post' | 'get', classes: string, customComponents: Components }
+const { schema, action, method, classes, theme } = Astro.props as { schema: FormSchema, action: string, method: 'post' | 'get', classes: string, theme: Theme }
 
-const components: Components = {
-    Array: ArrayInput,
-    Boolean: BooleanInput,
-    String: StringInput,
-    ...customComponents
+const components: Theme = {
+    ...GenericTheme,
+    ...theme
 }
 
 if (schema.type !== 'object') {
@@ -20,5 +15,5 @@ if (schema.type !== 'object') {
 ---
 
 <form action={action} method={method} class={classes}>
-    <GenericInput schema={schema} components={components} />
+    <components.Generic schema={schema} components={components} />
 </form>

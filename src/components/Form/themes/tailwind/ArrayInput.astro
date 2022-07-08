@@ -1,0 +1,11 @@
+---
+import { FormSchema } from "../../types";
+import GenericInput from "./GenericInput.astro";
+import InputLayout from "./InputLayout.astro";
+
+const { schema, name } = Astro.props as { schema: FormSchema, name: string }
+---
+
+<InputLayout schema={schema} name={name}>
+    <GenericInput schema={schema.items.properties} />
+</InputLayout>

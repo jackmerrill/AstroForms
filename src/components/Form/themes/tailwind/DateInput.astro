@@ -1,0 +1,10 @@
+---
+import InputLayout from "./InputLayout.astro";
+
+const { schema, name } = Astro.props as { schema: FormSchema, name: string }
+---
+
+<InputLayout schema={schema} name={name}>
+    <input type="date" name={name}
+        class="rounded-md border-gray-300 placeholder:italic text-gray-800 placeholder:text-gray-300" />
+</InputLayout>

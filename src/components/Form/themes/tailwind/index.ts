@@ -1,4 +1,4 @@
-import { InputType } from "../types";
+import { InputType } from "../../types";
 import StringInput from "./StringInput.astro";
 import BooleanInput from "./BooleanInput.astro";
 import ArrayInput from "./ArrayInput.astro";
@@ -10,6 +10,10 @@ import Submit from "./Submit.astro";
 export function GetInput(type: InputType) {
   switch (type) {
     case "string":
+      return StringInput;
+    case "password":
+      return StringInput;
+    case "email":
       return StringInput;
     case "number":
       return NumberInput;
@@ -27,3 +31,13 @@ export function GetInput(type: InputType) {
       return StringInput;
   }
 }
+
+export default {
+  String: StringInput,
+  Boolean: BooleanInput,
+  Array: ArrayInput,
+  Generic: GenericInput,
+  Date: DateInput,
+  Number: NumberInput,
+  Submit: Submit,
+};
