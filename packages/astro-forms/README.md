@@ -6,6 +6,16 @@ Pure Astro form component.
 
 Uses a JSON schema to generate a form.
 
+Usage:
+
+```astro
+---
+import { Form } from "astro-forms";
+---
+
+<Form schema={schema} method="post" action="/post" />
+```
+
 Schema example:
 
 ```json
