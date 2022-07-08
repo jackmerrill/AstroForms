@@ -1,0 +1,22 @@
+{
+  "name": "astro-forms",
+  "version": "1.0.1",
+  "description": "Forms in Astro, made easy.",
+  "main": "index.mjs",
+  "homepage": "https://github.com/jackmerrill/astroforms#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/jackmerrill/astroforms.git",
+    "directory": "packages/astro-forms"
+  },
+  "bugs": {
+    "url": "https://github.com/jackmerrill/astroforms/issues"
+  },
+  "author": "Jack Merrill",
+  "license": "MPL-2.0",
+  "keywords": [
+    "astro",
+    "forms",
+    "jsonform"
+  ]
+}
