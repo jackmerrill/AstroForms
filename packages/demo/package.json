@@ -1,0 +1,24 @@
+{
+  "name": "demo",
+  "version": "0.0.1",
+  "private": false,
+  "scripts": {
+    "dev": "astro dev",
+    "start": "astro dev",
+    "build": "astro build",
+    "preview": "astro preview"
+  },
+  "devDependencies": {
+    "@astrojs/tailwind": "^0.2.2",
+    "@babel/core": "^7.18.6",
+    "@babel/helper-validator-identifier": "7.18.6",
+    "@babel/preset-env": "^7.18.6",
+    "@babel/types": "^7.18.6",
+    "astro": "^1.0.0-beta.64",
+    "prettier": "^2.7.1",
+    "prettier-plugin-astro": "^0.1.1"
+  },
+  "dependencies": {
+    "astro-forms": "^1.0.5"
+  }
+}
