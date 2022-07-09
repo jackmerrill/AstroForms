@@ -1,6 +1,6 @@
 {
   "private": true,
-  "name": "example-monorepo",
+  "name": "astro-forms-monorepo",
   "workspaces": [
     "packages/*"
   ],
