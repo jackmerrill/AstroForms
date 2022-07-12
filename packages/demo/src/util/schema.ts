@@ -58,6 +58,24 @@ export default JSON.parse(`
 			"type": "string"
 		}
 	},
+	"arrayOfObjects": {
+		"type": "array",
+		"title": "Array of Objects",
+		"subtitle": "This is an array of objects, don't worry about it.",
+		"items": {
+			"type": "object",
+			"properties": {
+				"key": {
+					"type": "string",
+					"title": "Key"
+				},
+				"value": {
+					"type": "string",
+					"title": "Value"
+				}
+			}
+		}
+	},
 	"submit": {
 		"type": "submit",
 		"title": "Submit"

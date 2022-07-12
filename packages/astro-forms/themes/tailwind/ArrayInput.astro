@@ -35,9 +35,9 @@ const arrayData = Object.entries(data).map(([key, value]) => {
   <noscript>
     JavaScript is required to modify this array.
   </noscript>
-  <div id={`${name}-container`}>
+  <div id={`${name}-container`} class="grid">
     {arrayData.map((value, index) => (
-    <Input key={index} schema={schema.items} name={`${name}[${index}]`} value={value} />
+    <Input key={index} schema={schema.items} name={`${name}[${index}]`} value={value} schemaKey={name} data={data} />
     ))}
   </div>
   <button type="button" onclick="addNew()"
