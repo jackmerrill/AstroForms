@@ -50,6 +50,14 @@ export default JSON.parse(`
 			}
 		}
 	},
+	"randomArray": {
+		"type": "array",
+		"title": "Random Array",
+		"subtitle": "This is a random array, don't worry about it.",
+		"items": {
+			"type": "string"
+		}
+	},
 	"submit": {
 		"type": "submit",
 		"title": "Submit"
@@ -57,3 +65,28 @@ export default JSON.parse(`
   }
 }
 `);
+
+export const sampleData = {
+  name: "John Doe",
+  email: "johndoe@email.com",
+  password: "123456",
+  personalInfo: {
+    age: 30,
+    birthday: "2020-01-01",
+    scaryStuff: {
+      isScary: true,
+    },
+    acceptsTerms: true,
+  },
+  randomArray: ["a", "b", "c", "d", "e"],
+  arrayOfObjects: [
+    {
+      key: "a",
+      value: "A",
+    },
+    {
+      key: "b",
+      value: "B",
+    },
+  ],
+};

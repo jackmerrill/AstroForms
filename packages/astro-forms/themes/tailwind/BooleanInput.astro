@@ -1,13 +1,11 @@
 ---
+import { FormSchema } from "../../types";
 import InputLayout from "./InputLayout.astro";
 
-const { schema, name } = Astro.props as { schema: FormSchema; name: string };
+const { schema, name, value } = Astro.props as { schema: FormSchema; name: string, value: any };
 ---
 
 <InputLayout schema={schema} name={name}>
-  <input
-    type="checkbox"
-    name={name}
-    class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded"
-  />
+  <input type="checkbox" name={name} checked={value}
+    class="focus:ring-indigo-500 h-4 w-4 text-indigo-600 border-gray-300 rounded" />
 </InputLayout>

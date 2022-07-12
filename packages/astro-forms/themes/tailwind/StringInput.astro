@@ -2,10 +2,11 @@
 import { FormSchema } from "../../types";
 import InputLayout from "./InputLayout.astro";
 
-const { title, name, schema } = Astro.props as {
+const { title, name, schema, value } = Astro.props as {
   title: string;
   name: string;
   schema: FormSchema;
+  value: any;
 };
 
 const getInputType = () => {
@@ -27,11 +28,7 @@ const getInputType = () => {
 ---
 
 <InputLayout schema={schema} name={name}>
-  <input
-    type={getInputType()}
-    name={name}
-    id={name}
+  <input type={getInputType()} name={name} id={name} value={value}
     class="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 block w-full sm:text-sm border-gray-300 rounded-md"
-    placeholder="Enter a value..."
-  />
+    placeholder="Enter a value..." />
 </InputLayout>

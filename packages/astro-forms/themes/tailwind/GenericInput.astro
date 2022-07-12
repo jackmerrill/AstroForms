@@ -1,50 +1,69 @@
 ---
 import { Theme, FormSchema } from "../../types";
-import { GetInput } from "./util";
+import { GetInput } from ".";
 
-const { schema, schemaKey, components } = Astro.props as {
+const { schema, schemaKey, components, data } = Astro.props as {
     schema: FormSchema;
     schemaKey: string;
     components: Theme;
+    data: Record<string, any>;
 };
 
 const Inputs = [];
 const InputArgs = [];
 
 if (!schema.properties) {
-    throw new Error("No properties found in schema");
-}
-
-Object.entries(schema.properties).forEach(([key, value]) => {
-    let inputKey;
-
-    if (schemaKey) {
-        inputKey = `${schemaKey}.${key}`;
-    } else {
-        inputKey = key;
+    if (schema.type !== 'array') {
+        throw new Error("No properties found in schema");
     }
 
-    let FormInput;
-    let FormArgs: Record<string, any> = { title: value.title, name: inputKey };
+    if (!schema.items) {
+        throw new Error("No items found in array schema");
+    }
 
-    FormInput = GetInput(value.type);
-    FormArgs = {
-        ...FormArgs,
-        schema: value,
-        schemaKey: key,
-        items: value.items,
-        components,
-        subtitle: value.subtitle,
-    };
-
-    Inputs.push(FormInput);
-
+    Inputs.push(components.Array)
     InputArgs.push({
-        key,
-        value,
-        ...FormArgs,
+        schema: schema.items,
+        schemaKey: schemaKey,
+        components,
+        data
+    })
+} else {
+    Object.entries(schema.properties).forEach(([key, value]) => {
+        let inputKey;
+
+        if (schemaKey) {
+            inputKey = `${schemaKey}.${key}`;
+        } else {
+            inputKey = key;
+        }
+
+        let FormInput;
+        let FormArgs: Record<string, any> = { title: value.title, name: inputKey };
+
+        FormInput = GetInput(value.type);
+        FormArgs = {
+            ...FormArgs,
+            schema: value,
+            schemaKey: key,
+            items: value.items,
+            components,
+            subtitle: value.subtitle,
+            data,
+            value: data[inputKey]
+        };
+
+        Inputs.push(FormInput);
+
+        InputArgs.push({
+            key,
+            value,
+            ...FormArgs,
+        });
     });
-});
+
+}
+
 ---
 
 <div class:list={["space-y-2 grid", schemaKey && "px-2" ]}>

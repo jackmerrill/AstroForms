@@ -1,11 +1,47 @@
 ---
+// THIS IS VERY EXPERIMENTAL.
+// IT IS NOT RECOMMENDED TO USE THIS IN PRODUCTION.
+// YOU CURRENTLY CANNOT ADD NEW INPUTS.
+
+import { GetInput } from ".";
 import { FormSchema } from "../../types";
-import GenericInput from "./GenericInput.astro";
 import InputLayout from "./InputLayout.astro";
 
-const { schema, name } = Astro.props as { schema: FormSchema; name: string };
+const { schema, name, data } = Astro.props as { schema: FormSchema; name: string, data: any };
+
+const Input = GetInput(schema.items.type);
+
+const arrayData = Object.entries(data).map(([key, value]) => {
+  if (key.includes(name)) {
+    return value;
+  }
+}).filter(Boolean);
 ---
 
+<script is:inline define:vars={{ name }}>
+  const container = document.getElementById(`${name}-container`);
+
+  const existing = container.firstChild;
+
+  const addNew = () => {
+    // duplicate existing
+    const newInput = existing.cloneNode(true);
+    newInput.id = `${name}-${Date.now()}`;
+    container.appendChild(newInput);
+  }
+</script>
+
 <InputLayout schema={schema} name={name}>
-  <GenericInput schema={schema.items.properties} />
+  <noscript>
+    JavaScript is required to modify this array.
+  </noscript>
+  <div id={`${name}-container`}>
+    {arrayData.map((value, index) => (
+    <Input key={index} schema={schema.items} name={`${name}[${index}]`} value={value} />
+    ))}
+  </div>
+  <button type="button" onclick="addNew()"
+    class="px-3 py-2 w-full mt-1 bg-indigo-500 rounded-md hover:bg-indigo-600 transition-colors duration-150 text-white font-semibold">
+    Add
+  </button>
 </InputLayout>
