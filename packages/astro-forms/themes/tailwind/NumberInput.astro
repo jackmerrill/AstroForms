@@ -6,5 +6,6 @@ const { schema, name, value } = Astro.props as { schema: FormSchema; name: strin
 ---
 
 <InputLayout schema={schema} name={name}>
-  <input type="number" name={name} value={value} class="rounded-md border-gray-300" />
+  <input type="number" name={name} value={value}
+    class="rounded-md border-gray-300 dark:border-none dark:bg-gray-700 dark:text-white" />
 </InputLayout>

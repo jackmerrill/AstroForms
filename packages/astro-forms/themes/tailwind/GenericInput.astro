@@ -67,6 +67,6 @@ if (!schema.properties) {
 ---
 
 <div class:list={["space-y-2 grid", schemaKey && "px-2" ]}>
-    <h1 class="font-semibold text-xl">{schema.title}</h1>
+    <h1 class="font-semibold text-xl dark:text-white">{schema.title}</h1>
     {Inputs.map((Input, index) => <Input key={index} {...InputArgs[index]} />)}
 </div>
