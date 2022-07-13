@@ -5,13 +5,13 @@ const { schema, name } = Astro.props as { schema: FormSchema; name: string };
 ---
 
 <div>
-  <label for={name} class="block text-sm font-medium text-gray-700">{schema.title}
+  <label for={name} class="block text-sm font-medium text-gray-700 dark:text-white">{schema.title}
   </label>
   <div class="mt-1">
     <slot></slot>
   </div>
   {schema.subtitle && (
-  <p class="mt-2 text-sm text-gray-500" id="description">
+  <p class="mt-2 text-sm text-gray-500 dark:text-gray-300" id="description">
     {schema.subtitle}
   </p>
   )}
