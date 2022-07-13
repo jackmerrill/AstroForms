@@ -24,7 +24,7 @@ Make sure your Tailwind config file has the following:
 module.exports = {
   content: [
     "./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}",
-    "./node_modules/astro-forms/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}",
+    "./node_modules/astro-forms/themes/tailwind/*.astro",
   ],
   theme: {
     extend: {},
@@ -39,7 +39,7 @@ You can either add the `@tailwindcss/forms` plugin to your Tailwind config file,
 module.exports = {
   content: [
     "./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}",
-    "./node_modules/astro-forms/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}",
+    "./node_modules/astro-forms/themes/tailwind/*.astro",
   ],
   theme: {
     extend: {},
@@ -53,7 +53,7 @@ module.exports = {
   presets: [require("astro-forms/themes/tailwind/tailwind.config.cjs")],
   content: [
     "./src/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}",
-    "./node_modules/astro-forms/**/*.{astro,html,js,jsx,md,svelte,ts,tsx,vue}",
+    "./node_modules/astro-forms/themes/tailwind/*.astro",
   ],
   theme: {
     extend: {},
