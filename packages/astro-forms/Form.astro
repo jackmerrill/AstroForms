@@ -24,6 +24,6 @@ if (schema.type !== "object") {
 const flattenedData = flatten(data);
 ---
 
-<form action={action} method={method} class={classes}>
+<form action={action} method={method} class={classes} enctype="multipart/form-data">
   <components.Generic schema={schema} components={components} data={flattenedData} />
 </form>
