@@ -3,13 +3,14 @@ import { GenericTheme } from "./Themes";
 import { Theme, FormSchema } from "./types";
 import { flatten } from "./util";
 
-const { schema, action, method, classes, theme, data } = Astro.props as {
+const { schema, action, method, classes, theme, data, redirect } = Astro.props as {
   schema: FormSchema;
   action: string;
   method: "post" | "get";
   classes: string;
   theme: Theme;
-  data: Record<string, any>
+  data: Record<string, any>;
+  redirect: string;
 };
 
 const components: Theme = {
@@ -25,5 +26,8 @@ const flattenedData = flatten(data);
 ---
 
 <form action={action} method={method} class={classes} enctype="multipart/form-data">
+  {redirect && (
+    <input type="hidden" name="redirect" hidden value={redirect} />
+  )}
   <components.Generic schema={schema} components={components} data={flattenedData} />
 </form>

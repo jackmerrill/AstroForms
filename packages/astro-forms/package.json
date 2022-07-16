@@ -1,6 +1,6 @@
 {
   "name": "astro-forms",
-  "version": "1.0.9",
+  "version": "1.0.10",
   "description": "Forms in Astro, made easy.",
   "main": "index.mjs",
   "homepage": "https://github.com/jackmerrill/astroforms#readme",
